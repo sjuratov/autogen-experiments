@@ -2,3 +2,9 @@ autogen-agentchat==0.4.0.dev6
 autogen-ext[openai]==0.4.0.dev6
 azure-identity
 python-dotenv
+yfinance
+matplotlib
+pytz
+numpy
+pandas
+bs4
