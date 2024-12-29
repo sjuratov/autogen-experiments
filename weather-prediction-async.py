@@ -14,15 +14,15 @@ load_dotenv()
 AZURE_OPENAI_API_KEY = os.getenv('AZURE_OPENAI_API_KEY')
 AZURE_OPENAI_ENDPOINT = os.getenv('AZURE_OPENAI_ENDPOINT')
 AZURE_OPENAI_DEPLOYMENT = os.getenv('AZURE_OPENAI_DEPLOYMENT')
+AZURE_OPENAI_API_VERSION = os.getenv('AZURE_OPENAI_API_VERSION')
 
 async def main() -> None:
     # Define an agent
     weather_agent = AssistantAgent(
         name="weather_agent",
         model_client=AzureOpenAIChatCompletionClient(
-            #azure_deployment=AZURE_OPENAI_DEPLOYMENT,
             model=AZURE_OPENAI_DEPLOYMENT,
-            api_version="2024-06-01",
+            api_version=AZURE_OPENAI_API_VERSION,
             azure_endpoint=AZURE_OPENAI_ENDPOINT,
             api_key=AZURE_OPENAI_API_KEY,
         ),
