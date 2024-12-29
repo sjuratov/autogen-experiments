@@ -1,5 +1,5 @@
-autogen-agentchat==0.4.0.dev6
-autogen-ext[openai]==0.4.0.dev6
+autogen-agentchat==0.4.0.dev12
+autogen-ext[openai]==0.4.0.dev12
 azure-identity
 python-dotenv
 yfinance
