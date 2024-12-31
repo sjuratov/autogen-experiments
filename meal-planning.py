@@ -1,8 +1,7 @@
-from autogen_agentchat.agents import AssistantAgent, UserProxyAgent
+from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.ui import Console
 from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
-from autogen_agentchat.conditions import TextMentionTermination
 import asyncio
 from dotenv import load_dotenv
 import os
@@ -50,17 +49,13 @@ async def main() -> None:
         You are helpful AI assistant, specialist in making sure that all ingredients are readily available for cooking.
         You are a meticulous organizer with a keen eye for detail, you excel at sourcing high-quality ingredients and ensuring the pantry is always stocked.
         You will wait for meal_planner to create meal plan, and then you will create a comprehensive shopping list with quantities and specific items needed for the weekend meal plan.
-        You must finish your response with 'DONE'
         """
     )
-
-    # Create the termination condition which will end the conversation when the user says "DONE".
-    termination = TextMentionTermination("DONE")
 
     # Define a team with termination condition.
     agent_team = RoundRobinGroupChat(
         [meal_planner, groceries_shopper],
-        termination_condition=termination
+        max_turns=2
         )
 
     # Get user input from the console.
